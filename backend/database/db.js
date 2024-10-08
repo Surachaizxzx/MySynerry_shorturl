@@ -1,4 +1,4 @@
-const sql = require('@vercel/postgres');
+const { sql } = require('@vercel/postgres');
 const db = async (req, res) => {
     const { original, shortUrl } = req.body;
     try {
