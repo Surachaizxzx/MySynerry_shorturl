@@ -13,9 +13,23 @@ app.post('/api/keep_url', (req, res) => {
 app.post('/api/db', (req, res) => {
     return db(req, res);
 })
-app.get('/api/:shortId', (req, res) => {
-    return redirectToOriginal(req, res);
-})
+app.get('/api/:shortId', async (req, res) => {
+    const shortId = req.params.shortId;
+    try {
+        const result = await sql`
+            SELECT original_url FROM url_shortener WHERE short_url = ${shortId};
+        `;
+        if (result.rowCount > 0) {
+            const originalUrl = result.rows[0].original_url;
+            return res.redirect(originalUrl);
+        } else {
+            return res.status(404).json({ error: 'Short URL not found' });
+        }
+    } catch (error) {
+        console.error('Database query error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 const PORT = 5000;
 server.listen(PORT, () => {
     console.log(`server running on port ${PORT}`)
