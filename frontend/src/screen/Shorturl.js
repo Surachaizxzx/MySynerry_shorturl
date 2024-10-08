@@ -5,7 +5,7 @@ import './css/shorturl.css'
 export default function ShortUrl() {
     const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
-    // const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
+    const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
     const onClickLink = async (event) => {
         event.preventDefault();
         const urlPattern = /^(https?:\/\/[^\s]+)/; // รูปแบบสำหรับตรวจสอบ URL
@@ -19,6 +19,7 @@ export default function ShortUrl() {
             console.log(response.data); // นำมาใช้งานเพื่อไม่ให้เกิดข้อผิดพลาด
             const shortUrl = response.data.shortUrl; // เข้าถึง shortUrl
             console.log(shortUrl); // แสดง shortUrl ใน console
+            setShortUrl(shortUrl);
         } catch (err) {
             setError("เกิดข้อผิดพลาดในการสร้าง Short URL");
             console.error(err);
@@ -28,10 +29,15 @@ export default function ShortUrl() {
         <div className="contrainner">
             <div className="msg"><label htmlFor="urlinput">Create Short URls</label> </div >
             <form className="Form">
-                <input type="text" className="Input form-control form-control-sm " value={urlInput} id=" urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
+                <input type="text" className="Input form-control form-control-sm " value={urlInput} id="urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
                 {error && <div className="text-danger p-2">{error}</div>}
                 <button className="btn btn-lg mt-3 bg-success btn-secondary " onClick={onClickLink} >Create</button>
             </form>
+            {shortUrl && (
+                <div>
+                    Short URL: <a href={shortUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a>
+                </div>
+            )}
         </div >
     )
 
