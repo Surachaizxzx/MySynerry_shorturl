@@ -7,7 +7,17 @@ const shorturl = async (req, res) => {
     try {
         const response = await axios.post('https://my-synerry-shorturl.vercel.app/api/db', { original, shortUrl })
         if (response.status === 200) {
-            res.status(200).json({ shortUrl: `${shortUrl}` })
+            if (response.data.message === "URL already exists") {
+                res.status(200).json({
+                    shortUrl: `${shortUrl}`,
+                    message: "URL already exists"
+                })
+            } else {
+                res.status(200).json({
+                    shortUrl: `${shortUrl}`,
+                    message: "success"
+                })
+            }
         }
         else { res.status(response.status).json({ error: "Failed to insert URL", details: response.data }); }
 

@@ -16,9 +16,16 @@ export default function ShortUrl() {
         try {
             const response = await axios.post("https://my-synerry-shorturl.vercel.app/api/keep_url", { url: urlInput });
             console.log(response.data); // นำมาใช้งานเพื่อไม่ให้เกิดข้อผิดพลาด
-            const shortUrl = response.data.shortUrl; // เข้าถึง shortUrl
-            console.log(shortUrl); // แสดง shortUrl ใน console
-            setShortUrl(shortUrl);
+            const message = response.data.message;
+            if (message === "URL already exists") {
+                setShortUrl(""); // ตั้งค่า shortUrl เป็นว่าง
+                setError("URL นี้มีการสร้างไว้แล้ว"); // แจ้งเตือนว่ามีการสร้าง URL ซ้ำ
+            }
+            else {
+                const shortUrl = response.data.shortUrl; // เข้าถึง shortUrl
+                setShortUrl(shortUrl);
+                setError("");
+            }
         } catch (err) {
             setError("เกิดข้อผิดพลาดในการสร้าง Short URL");
             console.error(err);
@@ -37,6 +44,7 @@ export default function ShortUrl() {
                     Short URL: <a href={shortUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a>
                 </div>
             )}
+
         </div >
     )
 
