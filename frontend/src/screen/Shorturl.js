@@ -31,7 +31,7 @@ export default function ShortUrl() {
                 {error && <div className="text-danger p-2">{error}</div>}
                 <button className="btn btn-lg mt-3 bg-success btn-secondary " onClick={onClickLink} >Create</button>
             </form>
-            <div>{shortUrl}</div>
+            {shortUrl}
         </div >
     )
 
