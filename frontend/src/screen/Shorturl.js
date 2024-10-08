@@ -18,7 +18,7 @@ export default function ShortUrl() {
             console.log(response.data); // นำมาใช้งานเพื่อไม่ให้เกิดข้อผิดพลาด
             const message = response.data.message;
             if (message === "URL already exists") {
-                setShortUrl(`${response.data.ShortUrl}`); // ตั้งค่า shortUrl เป็นว่าง
+                setShortUrl(`${response.data.shortUrl}`); // ตั้งค่า shortUrl เป็นว่าง
                 setError(`URL นี้มีการสร้างไว้แล้ว นี้คือ short url`); // แจ้งเตือนว่ามีการสร้าง URL ซ้ำ
             }
             else {
