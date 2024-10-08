@@ -31,6 +31,11 @@ export default function ShortUrl() {
             console.error(err);
         }
     }
+    const onClickRemoveLink = (event) => {
+        event.preventDefault();
+        setShortUrl("");
+        setUrlInput("");
+    }
     return (
         <div className="contrainner">
             <div className="msg"><label htmlFor="urlinput">Create Short URls</label> </div >
@@ -38,6 +43,7 @@ export default function ShortUrl() {
                 <input type="text" className="Input form-control form-control-sm " value={urlInput} id="urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
                 {error && <div className="text-danger p-2">{error}</div>}
                 <button className="btn btn-lg mt-3 bg-success btn-secondary " onClick={onClickLink} >Create</button>
+                <button className="btn btn-lg mt-3 bg-danger btn-secondary  " onClick={onClickRemoveLink} >Reset</button>
             </form>
             {shortUrl && ( //เป็นจริงหรือไม่ถ้าเป็นจริงก็มาทำdiv
                 <div className="linkshort">
