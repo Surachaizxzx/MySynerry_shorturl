@@ -4,8 +4,7 @@ const db = async (req, res) => {
     try {
         await sql`
           INSERT INTO url_shortener (original_url, short_url)
-          VALUES (${original}, ${shortUrl});
-        `;
+          VALUES (${original}, ${shortUrl});`;
         res.status(200).json({ message: "URL added successfully" });
     } catch (error) {
         console.error("Database insert error:", error);
