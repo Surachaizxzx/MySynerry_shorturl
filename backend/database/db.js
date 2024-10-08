@@ -1,14 +1,16 @@
 import { sql } from "@vercel/postgres";
 const db = async (req, res) => {
     const { original, shortUrl } = req.body;
-    try {
-        await sql`
-          INSERT INTO url_shortener (original_url, short_url)
-          VALUES (${original}, ${shortUrl});
-        `;
-        res.status(200).json({ message: "URL added successfully" });
-    } catch (error) {
-        res.status(500).json({ error: "Failed to add URL" });
-    }
+    console.log(original);
+    console.log(shortUrl);
+    // try {
+    //     await sql`
+    //       INSERT INTO url_shortener (original_url, short_url)
+    //       VALUES (${original}, ${shortUrl});
+    //     `;
+    res.status(200).json({ message: "URL added successfully" });
+    // } catch (error) {
+    //     res.status(500).json({ error: "Failed to add URL" });
+    // }
 }
 module.exports = db;
