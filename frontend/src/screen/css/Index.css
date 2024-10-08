@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+.img {
+  img {
+    width: 50vh;
+    height: 50vh;
+  }
+}
+.contrainer {
+  display: flex;
+  justify-content: space-between; /* เพิ่มให้จัดตำแหน่งระหว่าง Logo และ Container */
+  padding: 10px;
+  align-items: center;
+}
+.list {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.paragraph {
+  display: flex;
+  width: 50vh;
+}
+p.paragraph {
+  margin-left: 100px;
+}
+.listitem {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+  color: black;
+  text-decoration: none;
+}
+.Logo {
+  img {
+    width: 20vh;
+    height: 20vh;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listitemActive {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+.listitem:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+/* Media Query สำหรับหน้าจอที่เล็กกว่า 768px */
+@media (max-width: 820px) {
+  .contrainer {
+    padding: auto;
+  }
+  .paragraph {
+    display: flex;
+    width: 50vh;
+    margin-left: 50px;
+  }
+  p.paragraph {
+    margin-left: 100px;
+  }
+
+  .listitemActive {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-right: 10px;
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .listitem {
+    font-size: smaller;
+  }
+
+  .Logo img {
+    width: 20px 20%; /* ปรับขนาดโลโก้ให้เล็กลง */
+    height: 20px auto; /* ปรับอัตราส่วนสูง/ต่ำ */
+  }
+  .Logo {
+    display: flex;
+    justify-content: flex-start;
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
