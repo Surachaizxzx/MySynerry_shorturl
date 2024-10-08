@@ -26,7 +26,7 @@
 .linkshort {
   grid-column: 2;
   padding-top: 30px;
-  grid-row: 2;
+  grid-row: 5;
 }
 .btn {
   margin-right: 60px; /* หรือเพิ่มค่า margin ตามที่คุณต้องการ */
