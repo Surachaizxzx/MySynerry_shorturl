@@ -8,8 +8,11 @@ const db = async (req, res) => {
           SELECT * FROM url_shortener WHERE original_url = ${original};`;
         if (existingUrl.rowCount > 0) {
             // ถ้ามี URL อยู่แล้ว ให้ส่ง message ที่มีอยู่กลับไป
+            const existingShortUrl = existingUrl.rows[0].short_url;
             return res.status(200).json({
+
                 message: "URL already exists",
+                original:`${existingShortUrl}`
             });
         }
         // ถ้า URL ยังไม่มี ให้ทำการ INSERT ข้อมูลใหม่

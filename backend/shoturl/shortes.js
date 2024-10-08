@@ -9,7 +9,7 @@ const shorturl = async (req, res) => {
         if (response.status === 200) {
             if (response.data.message === "URL already exists") {
                 res.status(200).json({
-                    shortUrl: `${shortUrl}`,
+                    shortUrl: `${response.data.original}`,
                     message: "URL already exists"
                 })
             } else {
