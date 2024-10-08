@@ -5,7 +5,11 @@ const shorturl = async (req, res) => {
     const shortId = uuidv4();
     const shortUrl = `https://my-synerry-shorturl.vercel.app/${shortId}`;
     try {
-        res.status(200).json({ shortUrl: `${shortUrl}` })
+        const response = axios.post('https://my-synerry-shorturl.vercel.app/api/db', { original, shortUrl })
+        if (response != null) {
+            res.status(200).json({ shortUrl: `${shortUrl}` })
+        }
+
     } catch (error) {
         console.log("Fail  insert to db")
     }
