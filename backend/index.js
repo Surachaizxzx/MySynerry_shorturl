@@ -17,7 +17,7 @@ app.post('/api/db', (req, res) => {
 app.get('/api/:shortId', async (req, res) => {
     const shortId = req.params.shortId;
     console.log(shortId);
-    const fullShortUrl = `https://my-synerry-shorturl.vercel.app/${shortId}`;
+    const fullShortUrl = `https://my-synerry-shorturl.vercel.app/api/${shortId}`;
     try {
         const result = await sql`
             SELECT original_url FROM url_shortener WHERE short_url = ${fullShortUrl};
