@@ -1,14 +1,16 @@
+const { sql } = require('@vercel/postgres')
 const redirectToOriginal = async (req, res) => {
-    const shortId = req.params.shortId; //get
+    const shortId = req.params.shortId;
+    console.log(shortId);
+    const fullShortUrl = `https://shortei.vercel.app/api/${shortId}`;
     try {
         const result = await sql`
-            SELECT original_url FROM url_shortener WHERE short_url = ${shortId};
-        `;
-        if (result.rowCount > 0) {//มีมั้ย ลิ้งนี้
+            SELECT original_url FROM url_shortener WHERE short_url = ${fullShortUrl};
+        `;//เจอ
+        if (result.rowCount > 0) {
             const originalUrl = result.rows[0].original_url;
             return res.redirect(originalUrl);
-        } else {
-            // ถ้าไม่พบ shortId ให้ส่งข้อความที่ชัดเจน
+        } else {//ไม่เจอ
             return res.status(404).json({ error: 'Short URL not found' });
         }
     } catch (error) {
@@ -16,3 +18,4 @@ const redirectToOriginal = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 }
+module.exports = redirectToOriginal;
