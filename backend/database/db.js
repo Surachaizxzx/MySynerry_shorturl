@@ -11,3 +11,4 @@ const db = async (req, res) => {
         res.status(500).json({ error: "Failed to add URL" });
     }
 }
+module.exports = db;
