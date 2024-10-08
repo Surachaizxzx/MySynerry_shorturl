@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import './css/shorturl.css'
-
 export default function ShortUrl() {
     const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
