@@ -1,22 +1,19 @@
-const express = require('express')
-const shorturl = require('./shoturl/shortes')
-const http = require('http')
-const cors = require('cors');
-const db = require('./database/db')
-const app = express();
-const server = http.createServer(app);
-app.use(cors()); // เปิดใช้งาน CORS สำหรับทุกโดเมน
-//rest api
-app.use(express.json())
+const express = require('express');
+const app = express()
+const PORT = 5000
+app.listen(PORT, () => {
+    console.log('Listening on PORT 5000')
+})
+app.get('/', (req, res) => {
+    res.send('this is api')
+})
 app.post('/keep_url', (req, res) => {
-    return shorturl(req, res);
-})
-app.post('/db', (req, res) => {
-    return db(req, res);
-})
-const PORT = 8080;
+    const url = req.body.url
+    res.status(200).json({
+        message: "success",
+        shortUrl: `${url}`
+    }
+    )
 
-server.listen(PORT, () => {
-    console.log(`server running on port ${PORT}`)
-});
-
+})
+module.exports = app

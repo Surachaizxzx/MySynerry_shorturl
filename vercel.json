@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "backend/index.js",
-      "use": "@vercel/node"
+      "use": "@now/node"
     },
     {
       "src": "frontend/package.json",
@@ -15,7 +15,7 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/(.*)",
       "dest": "/backend/index.js"
     },
     {
