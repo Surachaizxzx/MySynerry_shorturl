@@ -14,8 +14,8 @@ export default function app() {
         <Route path='/ShortUrl' element={<ShortUrl />} />
         <Route path='/QrCode' element={<QrCode />} />
       </Routes >
-
     </BrowserRouter >
+
 
   )
 }
