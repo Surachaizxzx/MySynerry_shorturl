@@ -2,7 +2,6 @@ const { sql } = require('@vercel/postgres');
 const db = async (req, res) => {
     const { original, shortUrl } = req.body;
     try {
-        // ทำการ INSERT และรับค่าจำนวนแถวที่ถูกเปลี่ยนแปลง
         const result = await sql`
           INSERT INTO url_shortener (original_url, short_url)
           VALUES (${original}, ${shortUrl}) RETURNING *;`;
