@@ -4,7 +4,7 @@ const redirectToOriginal = require('./shoturl/redirectToOriginal');
 const http = require('http');
 const cors = require('cors');
 const db = require('./database/db');
-const { sql } = require('@vercel/postgres');
+const { sql } = require('@vercel/postgres')
 const app = express();
 const server = http.createServer(app);
 app.use(express.json());
