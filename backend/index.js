@@ -15,11 +15,9 @@ app.post('/api/db', (req, res) => {
     return db(req, res);
 });
 app.get('/api/:shortId', async (req, res) => {
-    const shortId = req.params.shortId;
-    console.log(shortId);
     try {
         const result = await sql`
-            SELECT original_url FROM url_shortener WHERE short_url = ${shortId};
+            SELECT original_url FROM url_shortener WHERE short_url = https://my-synerry-shorturl.vercel.app/api/${shortId};
         `;//เจอ
         if (result.rowCount > 0) {
             const originalUrl = result.rows[0].original_url;
