@@ -12,7 +12,7 @@ const db = async (req, res) => {
             return res.status(200).json({
 
                 message: "URL already exists",
-                original:`${existingShortUrl}`
+                original: `${existingShortUrl}`
             });
         }
         // ถ้า URL ยังไม่มี ให้ทำการ INSERT ข้อมูลใหม่

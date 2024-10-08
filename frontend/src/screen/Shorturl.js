@@ -14,7 +14,7 @@ export default function ShortUrl() {
         }
         setError("");
         try {
-            const response = await axios.post("https://my-synerry-shorturl.vercel.app/api/keep_url", { url: urlInput });
+            const response = await axios.post("https://shortei.vercel.app/api/keep_url", { url: urlInput });
             console.log(response.data); // นำมาใช้งานเพื่อไม่ให้เกิดข้อผิดพลาด
             const message = response.data.message;
             if (message === "URL already exists") {
