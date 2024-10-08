@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 const shorturl = async (req, res) => {
     const original = req.body.url;
     const shortId = uuidv4().split('-')[0].slice(0, 6); // เอาเเค่ 6 ตัวอักษร
-    const shortUrl = `https://my-synerry-shorturl.vercel.app/${shortId}`;
+    const shortUrl = `https://my-synerry-shorturl.vercel.app/api/${shortId}`;
     try {
         const response = await axios.post('https://my-synerry-shorturl.vercel.app/api/db', { original, shortUrl })
         if (response.status === 200) {
