@@ -1,12 +1,17 @@
+import axios from "axios";
 const { v4: uuidv4 } = require('uuid');
-const shorturl = (req, res) => {
+const shorturl = async (req, res) => {
     const original = req.body.url;
-    res.status(200).json({
-        message: 'success',
-        shortUrl: `${original}`,
-    })
+    const shortId = uuidv4();
+    const shortUrl = `http://shortez.url/${shortId}`;
+    try {
+        const response = await axios.post('https://my-synerry-shorturl.vercel.app/api/db', { original, shortUrl })
+
+        if (response) {
+            res.status(200).json({ shortUrl: `${shortUrl}` })
+        }
+    } catch (error) {
+        console.log("Fail  insert to db")
+    }
 }
-const createShortUrl = () => {
-    return uuidv4().slice(0, 6); //เอารหัสสุ่มจาก uuid มา6ตัว
-};
 module.exports = shorturl;
