@@ -13,7 +13,7 @@ app.post('/api/keep_url', (req, res) => {
 app.post('/api/db', (req, res) => {
     return db(req, res);
 })
-app.get('/api/:', (req, res) => {
+app.get('/api/:shortId', (req, res) => {
     return redirectToOriginal(req, res);
 })
 const PORT = 5000;

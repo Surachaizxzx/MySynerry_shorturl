@@ -1,5 +1,5 @@
 const redirectToOriginal = async (req, res) => {
-    const shortId = req.params.shortId;
+    const shortId = req.params.shortId; //get
     try {
         const result = await sql`
             SELECT original_url FROM url_shortener WHERE short_url = ${shortId};
