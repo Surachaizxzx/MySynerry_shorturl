@@ -35,6 +35,7 @@ export default function ShortUrl() {
         event.preventDefault();
         setShortUrl("");
         setUrlInput("");
+        setError("");
     }
     return (
         <div className="contrainner">
