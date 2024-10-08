@@ -1,6 +1,5 @@
 import { sql } from "@vercel/postgres";
 const db = async (req, res) => {
-    const { original, shortUrl } = req.body;
     res.status(200);
     // try {
     //     await sql`
