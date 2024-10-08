@@ -5,7 +5,7 @@ import './css/shorturl.css'
 export default function ShortUrl() {
     const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
-    const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
+    // const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
     const onClickLink = async (event) => {
         event.preventDefault();
         const urlPattern = /^(https?:\/\/[^\s]+)/; // รูปแบบสำหรับตรวจสอบ URL
