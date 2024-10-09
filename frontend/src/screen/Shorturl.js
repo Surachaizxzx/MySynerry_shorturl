@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import './css/shorturl.css'
+import { QRCodeCanvas } from "qrcode.react";
+import { toPng } from 'html-to-image';
 export default function ShortUrl() {
-    const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
+    const [urlInput, setUrlInput] = useState("https://chatgpt.com/c/67050530-819c-800b-b911-09dc099d4d4b"); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
-    const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
+    const [shortUrl, setShortUrl] = useState("https://chatgpt.com/c/67050530-819c-800b-b911-09dc099d4d4b"); // เก็บ URL ที่ถูกย่อ
+    const qrRef = React.useRef(null); //อ้าง ตัว qr
     const onClickLink = async (event) => {
         event.preventDefault();
         const urlPattern = /^(https?:\/\/[^\s]+)/; // รูปแบบสำหรับตรวจสอบ URL
@@ -37,22 +40,56 @@ export default function ShortUrl() {
         setUrlInput("");
         setError("");
     }
+    const onSaveQRCode = () => {
+        if (qrRef.current) {
+            toPng(qrRef.current)
+                .then((dataUrl) => {
+                    const link = document.createElement('a');
+                    link.download = 'qrcode.png';
+                    link.href = dataUrl;
+                    link.click();
+                })
+                .catch((err) => {
+                    console.error('Error saving QR code:', err);
+                });
+        }
+    }
     return (
-        <div className="contrainner">
-            <div className="msg"><label htmlFor="urlinput">Create Short URls</label> </div >
-            <form className="Form">
-                <input type="text" className="Input form-control form-control-sm " value={urlInput} id="urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
-                {error && <div className="text-danger p-2">{error}</div>}
-                <button className="btn btn-lg mt-3 bg-success btn-secondary " onClick={onClickLink} >Create</button>
-                <button className="btn btn-lg mt-3 bg-danger btn-secondary  " onClick={onClickRemoveLink} >Reset</button>
-            </form>
+        <>
+            <div className="contrainner">
+                <div className="msg"><label htmlFor="urlinput">Create Short URls</label> </div >
+                <form className="Form">
+                    <input type="text" className="Input form-control form-control-sm " value={urlInput} id="urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
+                    {error && <div className="text-danger p-2">{error}</div>}
+                    <button className="btn btn-lg mt-3 bg-success btn-secondary " onClick={onClickLink} >Create</button>
+                    <button className="btn btn-lg mt-3 bg-danger btn-secondary  " onClick={onClickRemoveLink} >Reset</button>
+                </form>
+            </div >
             {shortUrl && ( //เป็นจริงหรือไม่ถ้าเป็นจริงก็มาทำdiv
-                <div className="linkshort">
-                    Short URL: <a href={shortUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a>
-                </div>
-            )}
+                <div className="link_qr">
+                    Short URL: <br /><a href={shortUrl} target="_blank" className="p-5" rel="noopener noreferrer">{shortUrl}</a>
+                    <div className="qrcodes">
+                        <div>
+                            <QRCodeCanvas className="QR" ref={qrRef} value={urlInput} />
+                            <p className="QR">{urlInput}</p>
+                            <div>
+                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={onSaveQRCode}>Save Original Url QR Code</button>
+                            </div>
+                        </div>
+                        <div className="QRS">
+                            <QRCodeCanvas className="QR" ref={qrRef} value={shortUrl} />
+                            <p className="QR">{shortUrl}</p>
+                            <div>
+                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={onSaveQRCode}>Save Short Url QR Code</button>
+                            </div>
+                        </div>
+                    </div >
 
-        </div >
+                </div >
+
+            )
+            }
+        </>
     )
 
 }
