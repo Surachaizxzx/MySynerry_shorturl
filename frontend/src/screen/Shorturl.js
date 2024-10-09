@@ -43,12 +43,12 @@ export default function ShortUrl() {
     }
     const onSaveQRCode = (qrRef) => {
         if (qrRef.current) {
-            toPng(qrRef.current)
+            toPng(qrRef.current) //เเปลงองค์ประกอบ เป็นPng
                 .then((dataUrl) => {
-                    const link = document.createElement('a');
-                    link.download = 'qrcode.png';
-                    link.href = dataUrl;
-                    link.click();
+                    const link = document.createElement('a'); //สร้าง เเเอดทริบิ้ว a
+                    link.download = 'qrcode.png'; //ระบุชืิ่อไฟล์
+                    link.href = dataUrl; //ให้ลิ้ง hrefมัน มีค่าคือ dataurl
+                    link.click(); //กดปุปดาวโหลดเลย
                 })
                 .catch((err) => {
                     console.error('Error saving QR code:', err);
