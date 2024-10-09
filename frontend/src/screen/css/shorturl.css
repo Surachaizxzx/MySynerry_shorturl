@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: auto;
   flex-flow: column wrap;
 }
 .msg {
@@ -47,7 +47,7 @@
   align-items: center;
   justify-content: center;
   margin-top: auto;
-  margin-bottom: auto;
+  margin-bottom: 50px;
   width: auto;
   text-align: center;
 }
@@ -55,4 +55,23 @@
 .btn {
   margin-right: 60px;
   margin-left: 60px;
+}
+.button {
+  background-color: #889188; /* สีปุ่ม */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s ease; /* ทำให้เอฟเฟกต์นุ่มนวล */
+  cursor: pointer;
+  border-radius: 5px;
+}
+.button:active {
+  transform: scale(0.95); /* ยุบปุ่มเล็กน้อย */
+  box-shadow: 0 5px #666;
+  transform: translateY(4px); /* ขยับลงเล็กน้อย */
 }

@@ -56,6 +56,16 @@ export default function ShortUrl() {
 
         }
     }
+    const onCopyLink = (link) => {
+        navigator.clipboard.writeText(link)
+            .then(() => {
+                setError("ลิงก์ถูกคัดลอกเรียบร้อยแล้ว!");
+            })
+            .catch((err) => {
+                setError("เกิดข้อผิดพลาดในการคัดลอกลิงก์");
+                console.error(err);
+            });
+    }
     return (
         <>
             <div className="contrainner">
@@ -75,7 +85,8 @@ export default function ShortUrl() {
                             <QRCodeCanvas className="QR" ref={originalQrRef} value={urlInput} />
                             <p className="QR">{urlInput}</p>
                             <div>
-                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={() => onSaveQRCode(originalQrRef)}>Save Original Url QR Code</button>
+                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={() => onSaveQRCode(originalQrRef)}>Save Original Url QR Code </button>
+                                <div><button className="button btn btn-md mt-3 bg-secondary btn-secondary" onClick={() => onCopyLink(urlInput)}><i class="bi bi-box-arrow-in-down">Copy</i></button></div>
                             </div>
                         </div>
                         <div className="QRS">
@@ -83,6 +94,7 @@ export default function ShortUrl() {
                             <p className="QR">{shortUrl}</p>
                             <div>
                                 <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={() => onSaveQRCode(shortQrRef)}>Save Short Url QR Code</button>
+                                <div><button className="btn btn-md mt-3 bg-secondary btn-secondary" onClick={() => onCopyLink(shortUrl)}><i class="bi bi-box-arrow-in-down">Copy</i></button></div>
                             </div>
                         </div>
                     </div >
