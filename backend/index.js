@@ -3,6 +3,7 @@ const shorturl = require('./shoturl/shortes');
 const redirectToOriginal = require('./shoturl/redirectToOriginal');
 const http = require('http');
 const db = require('./database/db');
+const Query = require('./database/query')
 const app = express();
 const server = http.createServer(app);
 app.use(express.json());
@@ -15,6 +16,9 @@ app.post('/api/db', (req, res) => {
 app.get('/api/:shortId', async (req, res) => {
     return redirectToOriginal(req, res);
 });
+app.get('/api/query', (req, res) => {
+    return Query(req, res);
+})
 const PORT = 5000;
 
 server.listen(PORT, () => {
