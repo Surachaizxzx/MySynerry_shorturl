@@ -6,7 +6,7 @@ const Query = async (req, res) => {
             data.rows
         )
     } catch (error) {
-        console.error('Error querying data:', error);
+        console.error('Error querying data :', error);
         res.status(500).json({ error: 'Failed to fetch data' });
     }
 }
