@@ -20,16 +20,36 @@ export default function List() {
     if (error) {
         return <div>{error}</div>;
     }
+    //<ul>
+    //     {data.map((link) => (
+    //         <li key={link.id}>
+    //             original_url: {link.original_url}, short_url: {link.short_url}, Click Count: {link.clicklink}
+    //         </li>
+    //     ))}
+    // </ul>
     return (
-        <div>
+        <div >
             <h1>User List</h1>
-            <ul>
-                {data.map((link) => (
-                    <li key={link.id}>
-                        original_url: {link.original_url}, short_url: {link.short_url}, Click Count: {link.clicklink}
-                    </li>
-                ))}
-            </ul>
-        </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>original_url</th>
+                        <th>short_url</th>
+                        <th>Click Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((link) => (
+                        <tr key={link.id}>
+                            <td>{link.id}</td>
+                            <td>{link.original_url}</td>
+                            <td>{link.short_url}</td>
+                            <td>{link.clicklink}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div >
     );
 }
