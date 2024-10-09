@@ -3,7 +3,7 @@ import axios from "axios";
 export default function List() {
     const [data, setData] = useState([]);
     useEffect(() => {
-        axios.get('/api/query').then((Response) => {
+        axios.get('https://shortei.vercel.app/api/query').then((Response) => {
             setData(Response.data);
         })
     }, []);
@@ -19,6 +19,4 @@ export default function List() {
             </ul>
         </div>
     );
-
-
 }

@@ -1,7 +1,7 @@
 const { sql } = require('@vercel/postgres');
 const Query = async (req, res) => {
     try {
-        const data = await sql`SELECT * FROM url_shortener;`;
+        const data = await sql`SELECT * FROM url_shortener`;
         res.status(200).json(
             data.rows
         )
