@@ -1,6 +1,6 @@
 import React from "react";
 import './css/shorturl.css'
-export default function QrCode() {
+export default function List() {
     return (
         <div className="contrainner">
             <div className="msg"><label for="urlinput">Create QR Code</label> </div >

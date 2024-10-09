@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './screen/nav'
 import Section from './screen/section';
-import QrCode from './screen/Qrcode';
+import List from './screen/list';
 import ShortUrl from './screen/Shorturl';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 export default function app() {
@@ -12,7 +12,7 @@ export default function app() {
       <Routes>
         <Route path='/' element={<Section />} />
         <Route path='/ShortUrl' element={<ShortUrl />} />
-        <Route path='/QrCode' element={<QrCode />} />
+        <Route path='/List' element={<List />} />
       </Routes >
     </BrowserRouter >
 

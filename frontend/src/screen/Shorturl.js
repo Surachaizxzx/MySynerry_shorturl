@@ -4,9 +4,9 @@ import './css/shorturl.css'
 import { QRCodeCanvas } from "qrcode.react";
 import { toPng } from 'html-to-image';
 export default function ShortUrl() {
-    const [urlInput, setUrlInput] = useState("https://chatgpt.com/c/67050530-819c-800b-b911-09dc099d4d4b"); // เก็บลิ้ง
+    const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
-    const [shortUrl, setShortUrl] = useState("https://chatgpt.com/c/67050530-819c-800b-b911-09dc099d4d4b"); // เก็บ URL ที่ถูกย่อ
+    const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
     const qrRef = React.useRef(null); //อ้าง ตัว qr
     const onClickLink = async (event) => {
         event.preventDefault();

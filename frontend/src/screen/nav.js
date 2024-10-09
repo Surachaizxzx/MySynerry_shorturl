@@ -15,7 +15,7 @@ export default function Navbar() {
                 <ul className="list">
                     <NavLink className={({ isActive }) => isActive ? "listitemActive " : "listitem"} to="/" >Home</NavLink>
                     <NavLink className={({ isActive }) => isActive ? "listitemActive " : "listitem"} to="/ShortUrl">Create Short url</NavLink>
-                    <NavLink className={({ isActive }) => isActive ? "listitemActive " : "listitem"} to="/QrCode">Create QR Code</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "listitemActive " : "listitem"} to="/List">Create QR Code</NavLink>
                 </ul>
             </div>
         </nav >
