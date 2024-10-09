@@ -9,6 +9,11 @@ export default function ShortUrl() {
     const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
     const originalQrRef = useRef(null); // Ref สำหรับ Original URL QR Code
     const shortQrRef = useRef(null);    // Ref สำหรับ Short URL QR Code
+    const onChangeUrl = (value) => {
+        setUrlInput(value);
+        setShortUrl("");
+        setError("");
+    }
     const onClickLink = async (event) => {
         event.preventDefault();
         const urlPattern = /^(https?:\/\/[^\s]+)/; // รูปแบบสำหรับตรวจสอบ URL
@@ -71,7 +76,7 @@ export default function ShortUrl() {
             <div className="contrainner">
                 <div className="msg"><label htmlFor="urlinput">Create Short URls</label> </div >
                 <form className="Form">
-                    <input type="text" className="Input form-control form-control-sm " placeholder="Enter Your Url" value={urlInput} id="urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
+                    <input type="text" className="Input form-control form-control-sm " placeholder="Enter Your Url" value={urlInput} id="urlinput" onChange={(e) => onChangeUrl(e.target.value)}></input>
                     {error && <div className="text-danger p-2">{error}</div>}
                     <button className="btn btn-lg mt-3 bg-success btn-secondary " onClick={onClickLink} >Create</button>
                     <button className="btn btn-lg mt-3 bg-danger btn-secondary  " onClick={onClickRemoveLink} >Reset</button>
