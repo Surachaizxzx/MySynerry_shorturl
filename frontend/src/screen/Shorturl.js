@@ -94,7 +94,7 @@ export default function ShortUrl() {
                             <p className="QR">{shortUrl}</p>
                             <div>
                                 <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={() => onSaveQRCode(shortQrRef)}>Save Short Url QR Code</button>
-                                <div><button className="btn btn-md mt-3 bg-secondary btn-secondary" onClick={() => onCopyLink(shortUrl)}><i class="bi bi-box-arrow-in-down">Copy</i></button></div>
+                                <div><button className="button btn btn-md mt-3 bg-secondary btn-secondary" onClick={() => onCopyLink(shortUrl)}><i class="bi bi-box-arrow-in-down">Copy</i></button></div>
                             </div>
                         </div>
                     </div >
