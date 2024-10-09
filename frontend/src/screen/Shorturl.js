@@ -4,9 +4,9 @@ import './css/shorturl.css'
 import { QRCodeCanvas } from "qrcode.react";
 import { toPng } from 'html-to-image';
 export default function ShortUrl() {
-    const [urlInput, setUrlInput] = useState("https://popsmanga.com/the-worlds-best-engineer-%e0%b8%95%e0%b8%ad%e0%b8%99%e0%b8%97%e0%b8%b5%e0%b9%88-104/"); // เก็บลิ้ง
+    const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
-    const [shortUrl, setShortUrl] = useState("https://popsmanga.com"); // เก็บ URL ที่ถูกย่อ
+    const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
     const originalQrRef = useRef(null); // Ref สำหรับ Original URL QR Code
     const shortQrRef = useRef(null);    // Ref สำหรับ Short URL QR Code
     const onClickLink = async (event) => {
@@ -71,7 +71,7 @@ export default function ShortUrl() {
             <div className="contrainner">
                 <div className="msg"><label htmlFor="urlinput">Create Short URls</label> </div >
                 <form className="Form">
-                    <input type="text" className="Input form-control form-control-sm " value={urlInput} id="urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
+                    <input type="text" className="Input form-control form-control-sm " placeholder="Enter Your Url" value={urlInput} id="urlinput" onChange={(e) => setUrlInput(e.target.value)}></input>
                     {error && <div className="text-danger p-2">{error}</div>}
                     <button className="btn btn-lg mt-3 bg-success btn-secondary " onClick={onClickLink} >Create</button>
                     <button className="btn btn-lg mt-3 bg-danger btn-secondary  " onClick={onClickRemoveLink} >Reset</button>
