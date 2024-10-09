@@ -9,6 +9,10 @@ const redirectToOriginal = async (req, res) => {
         `;//เจอ
         if (result.rowCount > 0) {
             const originalUrl = result.rows[0].original_url;
+            const count = result.rows[0].clicklink; //เอาค่ามันมา
+            const plus = count + 1;
+            sql`
+            UPDATE url_shortener SET clicklink = ${plus} WHERE short_url = ${fullShortUrl};`;
             return res.redirect(originalUrl);
         } else {//ไม่เจอ
             return res.status(404).json({ error: 'Short URL not found' });

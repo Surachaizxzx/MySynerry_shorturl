@@ -20,7 +20,7 @@ export default function List() {
     }
 
     return (
-        <div>
+        <div style={{ display: "flex", flexFlow: "column", justifyContent: "center", alignItems: "center" }}>
             <h1>User List</h1>
             <table style={{ borderCollapse: 'separate', borderSpacing: '10px' }}>
                 <thead>
@@ -45,7 +45,7 @@ export default function List() {
                             </td>
                             <td style={{
                                 padding: '10px',
-                                maxWidth: '150px',
+                                maxWidth: '180px',
                                 overflow: 'hidden',
                                 textOverflow: 'ellipsis',
                                 whiteSpace: 'nowrap'
