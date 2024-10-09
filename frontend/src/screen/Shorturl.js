@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import './css/shorturl.css'
 import { QRCodeCanvas } from "qrcode.react";
@@ -7,7 +7,8 @@ export default function ShortUrl() {
     const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
     const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
-    let qrRef = React.useRef(null); //อ้าง ตัว qr
+    const originalQrRef = useRef(null); // Ref สำหรับ Original URL QR Code
+    const shortQrRef = useRef(null);    // Ref สำหรับ Short URL QR Code
     const onClickLink = async (event) => {
         event.preventDefault();
         const urlPattern = /^(https?:\/\/[^\s]+)/; // รูปแบบสำหรับตรวจสอบ URL
@@ -40,7 +41,7 @@ export default function ShortUrl() {
         setUrlInput("");
         setError("");
     }
-    const onSaveQRCode = () => {
+    const onSaveQRCode = (qrRef) => {
         if (qrRef.current) {
             toPng(qrRef.current)
                 .then((dataUrl) => {
@@ -54,7 +55,6 @@ export default function ShortUrl() {
                 });
 
         }
-        qrRef = null;
     }
     return (
         <>
@@ -72,17 +72,17 @@ export default function ShortUrl() {
                     Short URL: <br /><a href={shortUrl} target="_blank" className="p-5" rel="noopener noreferrer">{shortUrl}</a>
                     <div className="qrcodes">
                         <div>
-                            <QRCodeCanvas className="QR" ref={qrRef} value={urlInput} />
+                            <QRCodeCanvas className="QR" ref={originalQrRef} value={urlInput} />
                             <p className="QR">{urlInput}</p>
                             <div>
-                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={onSaveQRCode}>Save Original Url QR Code</button>
+                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={() => onSaveQRCode(originalQrRef)}>Save Original Url QR Code</button>
                             </div>
                         </div>
                         <div className="QRS">
-                            <QRCodeCanvas className="QR" ref={qrRef} value={shortUrl} />
+                            <QRCodeCanvas className="QR" ref={shortQrRef} value={shortUrl} />
                             <p className="QR">{shortUrl}</p>
                             <div>
-                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={onSaveQRCode}>Save Short Url QR Code</button>
+                                <button className="btn btn-md mt-3 bg-success btn-secondary" onClick={() => onSaveQRCode(shortQrRef)}>Save Short Url QR Code</button>
                             </div>
                         </div>
                     </div >
