@@ -4,8 +4,10 @@ const redirectToOriginal = require('./shoturl/redirectToOriginal');
 const http = require('http');
 const db = require('./database/db');
 const Query = require('./database/query')
+const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
+app.use(cors());
 app.use(express.json());
 app.post('/api/keep_url', (req, res) => {
     return shorturl(req, res);
