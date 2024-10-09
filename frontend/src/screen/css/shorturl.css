@@ -46,7 +46,8 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
   width: auto;
   text-align: center;
 }
