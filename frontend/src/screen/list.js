@@ -13,7 +13,7 @@ export default function List() {
             <ul>
                 {data.map((link) => (
                     <li key={link.id}>
-                        original_url: {link.original_url}, short url: {link.short_url},count Click :{link.clicklink}
+                        original_url : {link.original_url}, short url: {link.short_url},count Click :{link.clicklink}
                     </li>
                 ))}
             </ul>
