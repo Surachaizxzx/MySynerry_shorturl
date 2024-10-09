@@ -22,7 +22,7 @@
       {
         "src": "/(.*)",
         "headers": { "x-forwarded-host": "localhost:5000" },
-        "dest": "http://localhost:5000/$1"
+        "dest": "https://shortei.vercel.app/"
       }
     ]
 }
