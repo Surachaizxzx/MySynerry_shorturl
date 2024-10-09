@@ -19,12 +19,6 @@ app.get('/api/query', async (req, res) => {
 app.get('/api/:shortId', async (req, res) => {
     return redirectToOriginal(req, res);
 });
-app.get('/', (req, res) => {
-    return res.redirect('https://shortei.vercel.app').status(200); // ใช้เส้นทางไปยังไฟล์ index.html ของ Frontend
-});
-app.get('*', (req, res) => {
-    return res.redirect('https://shortei.vercel.app').status(200);
-})
 
 const PORT = 5000;
 
