@@ -19,6 +19,9 @@ app.get('/api/query', async (req, res) => {
 app.get('/api/:shortId', async (req, res) => {
     return redirectToOriginal(req, res);
 });
+app.get('/', async (req, res) => {
+    return res.redirect("https://shortei.vercel.app/");
+});
 
 const PORT = 5000;
 
