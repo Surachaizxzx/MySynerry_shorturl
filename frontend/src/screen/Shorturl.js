@@ -4,9 +4,9 @@ import './css/shorturl.css'
 import { QRCodeCanvas } from "qrcode.react";
 import { toPng } from 'html-to-image';
 export default function ShortUrl() {
-    const [urlInput, setUrlInput] = useState(""); // เก็บลิ้ง
+    const [urlInput, setUrlInput] = useState("https://popsmanga.com/the-worlds-best-engineer-%e0%b8%95%e0%b8%ad%e0%b8%99%e0%b8%97%e0%b8%b5%e0%b9%88-104/"); // เก็บลิ้ง
     const [error, setError] = useState(""); // ผิดมั้ย
-    const [shortUrl, setShortUrl] = useState(""); // เก็บ URL ที่ถูกย่อ
+    const [shortUrl, setShortUrl] = useState("https://popsmanga.com"); // เก็บ URL ที่ถูกย่อ
     const originalQrRef = useRef(null); // Ref สำหรับ Original URL QR Code
     const shortQrRef = useRef(null);    // Ref สำหรับ Short URL QR Code
     const onClickLink = async (event) => {
@@ -81,7 +81,7 @@ export default function ShortUrl() {
                 <div className="link_qr">
                     Short URL: <br /><a href={shortUrl} target="_blank" className="p-5" rel="noopener noreferrer">{shortUrl}</a>
                     <div className="qrcodes">
-                        <div>
+                        <div className="QRS">
                             <QRCodeCanvas className="QR" ref={originalQrRef} value={urlInput} />
                             <p className="QR">{urlInput}</p>
                             <div>

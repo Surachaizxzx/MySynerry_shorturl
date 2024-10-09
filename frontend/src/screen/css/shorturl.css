@@ -29,17 +29,27 @@
 }
 .qrcodes {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  justify-content: space-between; /* จัดให้ QR code อยู่ห่างกัน */
+  margin-top: 20px;
 }
+
 .QR {
-  text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+  text-align: center; /* จัดข้อความให้ตรงกลาง */
+  margin: 0 20px; /* เพิ่มระยะห่างระหว่าง QR code กับข้อความ */
+  width: 400px;
+  overflow: scroll;
 }
-.QSR {
+.QRS {
+  text-align: center;
+  margin: 0 10px; /* ระยะห่างระหว่าง QR Code */
+}
+
+.link_qr {
   display: flex;
+  flex-direction: column;
+  align-items: center; /* จัดให้ลิงก์อยู่ตรงกลาง */
   justify-content: center;
-  align-items: center;
+  margin-top: 20px;
 }
 .link_qr {
   display: flex;
