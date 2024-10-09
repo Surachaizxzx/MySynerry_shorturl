@@ -21,6 +21,10 @@
     {
       "src": "/(.*)",
       "dest": "/frontend/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/frontend/$1" 
     }
   ]
 }
