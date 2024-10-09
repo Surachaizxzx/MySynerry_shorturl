@@ -7,6 +7,9 @@ const Query = require('./database/query')
 const app = express();
 const server = http.createServer(app);
 app.use(express.json());
+app.get('/', async (req, res) => {
+    return res.redirect("https://shortei.vercel.app");
+});
 app.post('/api/keep_url', (req, res) => {
     return shorturl(req, res);
 });
@@ -19,9 +22,7 @@ app.get('/api/query', async (req, res) => {
 app.get('/api/:shortId', async (req, res) => {
     return redirectToOriginal(req, res);
 });
-app.get('/', async (req, res) => {
-    return res.redirect("https://shortei.vercel.app/");
-});
+
 
 const PORT = 5000;
 
